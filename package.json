@@ -1,0 +1,12 @@
+{
+  "name": "paper-reader",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "xml2js": "^0.4.4"
+  },
+  "devDependencies": {}
+}
