@@ -1,23 +1,30 @@
 module.exports = function(req, res) {
-	// Demo sample using ABBYY Cloud OCR SDK from Node.js
 
-	// if (typeof process == 'undefined' || process.argv[0] != "node") {
-	// 	throw new Error("This code must be run on server side under NodeJS");
-	// }
-
-	// !!! Please provide your application id and password and remove this line !!!
-	// To create an application and obtain a password,
-	// register at http://cloud.ocrsdk.com/Account/Register
-	// More info on getting your application id and password at
-	// http://ocrsdk.com/documentation/faq/#faq3
-
-	// Name of application you created
 	var appId = 'paper-reader';
 	// Password should be sent to your e-mail after application was created
 	var password = 'XrmcliEauxX4TIM4LwDrIf90';
 
 	var imagePath = __dirname + '/routes/QQ20141128-3.png';
 	var outputPath = __dirname + '/cloud/routes/result1.txt';
+
+	var fs = require('fs');
+
+	var iconFile = req.files.file;
+	  if(iconFile) {
+	    fs.readFile(iconFile.path, function(err, data){
+	      if(err) {
+	        	return res.send("读取文件失败");
+	        }
+
+	      var base64Data = data.toString('base64');
+	      var theFile = new AV.File(iconFile.name, {base64: base64Data});
+	      theFile.save().then(function(theFile){
+	        res.send("上传成功！");
+	      });
+	    });
+	  } else {
+	    res.send("请选择一个文件。");
+	  }
 
 	try {
 		console.log("ABBYY Cloud OCR SDK Sample for Node.js");
