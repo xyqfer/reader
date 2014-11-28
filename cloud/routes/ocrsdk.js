@@ -74,21 +74,21 @@ function ProcessingSettings() {
  */
 ocrsdk.prototype.processImage = function(filePath, settings, userCallback) {
 
-	if (!fs.existsSync(filePath) || !fs.statSync(filePath).isFile()) {
-		userCallback(new Error("file " + filePath + " doesn't exist"), null);
-		return;
-	}
+	// if (!fs.existsSync(filePath) || !fs.statSync(filePath).isFile()) {
+	// 	userCallback(new Error("file " + filePath + " doesn't exist"), null);
+	// 	return;
+	// }
 
-	if (settings == null) {
-		settings = new ProcessingSettings();
-	}
+	// if (settings == null) {
+	// 	settings = new ProcessingSettings();
+	// }
 
 	var urlOptions = settings.asUrlParams();
 	var req = this._createTaskRequest('POST', '/processImage' + urlOptions,
 			userCallback);
 
-	var fileContents = fs.readFileSync(filePath);
-	req.write(fileContents);
+	//var fileContents = fs.readFileSync(filePath);
+	req.write(filePath);
 	req.end();
 }
 
