@@ -16,8 +16,8 @@ module.exports = function(req, res) {
 	// Password should be sent to your e-mail after application was created
 	var password = 'XrmcliEauxX4TIM4LwDrIf90';
 
-	var imagePath = 'cloud/routes/QQ20141128-2.png';
-	var outputPath = 'cloud/routes/result.txt';
+	var imagePath = './QQ20141128-2.png';
+	var outputPath = './result.txt';
 
 	try {
 		console.log("ABBYY Cloud OCR SDK Sample for Node.js");
