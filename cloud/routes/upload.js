@@ -16,86 +16,91 @@ module.exports = function(req, res) {
 	// Password should be sent to your e-mail after application was created
 	var password = 'XrmcliEauxX4TIM4LwDrIf90';
 
-	var imagePath = './QQ20141128-2.png';
-	var outputPath = './result.txt';
+	var imagePath = 'cloud/routes/QQ20141128-2.png';
+	var outputPath = 'cloud/routes/result.txt';
 
-	try {
-		console.log("ABBYY Cloud OCR SDK Sample for Node.js");
+	var fs = require('fs');
+	var text = fs.readFileSync('cloud/routes/result.txt', 'utf-8');
+	res.send(text);
+	return;
 
-		var ocrsdkModule = require('cloud/routes/ocrsdk.js');
-		var ocrsdk = ocrsdkModule.create(appId, password);
-		ocrsdk.serverUrl = "http://cloud.ocrsdk.com"; // change to https for secure connection
+	// try {
+	// 	console.log("ABBYY Cloud OCR SDK Sample for Node.js");
 
-		if (appId.length == 0 || password.length == 0) {
-			throw new Error("Please provide your application id and password!");
-		}
+	// 	var ocrsdkModule = require('cloud/routes/ocrsdk.js');
+	// 	var ocrsdk = ocrsdkModule.create(appId, password);
+	// 	ocrsdk.serverUrl = "http://cloud.ocrsdk.com"; // change to https for secure connection
+
+	// 	if (appId.length == 0 || password.length == 0) {
+	// 		throw new Error("Please provide your application id and password!");
+	// 	}
 		
-		if( imagePath == 'myFile.jpg') {
-			throw new Error( "Please provide path to your image!")
-		}
+	// 	if( imagePath == 'myFile.jpg') {
+	// 		throw new Error( "Please provide path to your image!")
+	// 	}
 
-		function downloadCompleted(error) {
-			if (error) {
-				console.log("Error: " + error.message);
-				return;
-			}
-			console.log("Done.");
+	// 	function downloadCompleted(error) {
+	// 		if (error) {
+	// 			console.log("Error: " + error.message);
+	// 			return;
+	// 		}
+	// 		console.log("Done.");
 
-			// TODO
+	// 		// TODO
 
-			var fs = require('fs');
-			var text = fs.readFileSync(outputPath, 'utf-8');
-			res.send(text);
-		}
+	// 		var fs = require('fs');
+	// 		var text = fs.readFileSync(outputPath, 'utf-8');
+	// 		res.send(text);
+	// 	}
 
-		function processingCompleted(error, taskData) {
-			if (error) {
-				console.log("Error: " + error.message);
-				return;
-			}
+	// 	function processingCompleted(error, taskData) {
+	// 		if (error) {
+	// 			console.log("Error: " + error.message);
+	// 			return;
+	// 		}
 
-			if (taskData.status != 'Completed') {
-				console.log("Error processing the task.");
-				if (taskData.error) {
-					console.log("Message: " + taskData.error);
-				}
-				return;
-			}
+	// 		if (taskData.status != 'Completed') {
+	// 			console.log("Error processing the task.");
+	// 			if (taskData.error) {
+	// 				console.log("Message: " + taskData.error);
+	// 			}
+	// 			return;
+	// 		}
 
-			console.log("Processing completed.");
-			console.log("Downloading result to " + outputPath);
+	// 		console.log("Processing completed.");
+	// 		console.log("Downloading result to " + outputPath);
 
-			ocrsdk
-					.downloadResult(taskData.resultUrl.toString(), outputPath,
-							downloadCompleted);
-		}
+	// 		ocrsdk
+	// 				.downloadResult(taskData.resultUrl.toString(), outputPath,
+	// 						downloadCompleted);
+	// 	}
 
-		function uploadCompleted(error, taskData) {
-			if (error) {
-				console.log("Error: " + error.message);
-				return;
-			}
+	// 	function uploadCompleted(error, taskData) {
+	// 		if (error) {
+	// 			console.log("Error: " + error.message);
+	// 			return;
+	// 		}
 
-			console.log("Upload completed.");
-			console.log("Task id = " + taskData.id + ", status is " + taskData.status);
-			if (!ocrsdk.isTaskActive(taskData)) {
-				console.log("Unexpected task status " + taskData.status);
-				return;
-			}
+	// 		console.log("Upload completed.");
+	// 		console.log("Task id = " + taskData.id + ", status is " + taskData.status);
+	// 		if (!ocrsdk.isTaskActive(taskData)) {
+	// 			console.log("Unexpected task status " + taskData.status);
+	// 			return;
+	// 		}
 
-			ocrsdk.waitForCompletion(taskData.id, processingCompleted);
-		}
+	// 		ocrsdk.waitForCompletion(taskData.id, processingCompleted);
+	// 	}
 
-		var settings = new ocrsdkModule.ProcessingSettings();
-		// Set your own recognition language and output format here
-		settings.language = "ChinesePRC"; // Can be comma-separated list, e.g. "German,French".
-		settings.exportFormat = "txt"; // All possible values are listed in 'exportFormat' parameter description 
-	                                   // at http://ocrsdk.com/documentation/apireference/processImage/
+	// 	var settings = new ocrsdkModule.ProcessingSettings();
+	// 	// Set your own recognition language and output format here
+	// 	settings.language = "ChinesePRC"; // Can be comma-separated list, e.g. "German,French".
+	// 	settings.exportFormat = "txt"; // All possible values are listed in 'exportFormat' parameter description 
+	//                                    // at http://ocrsdk.com/documentation/apireference/processImage/
 
-		console.log("Uploading image..");
-		ocrsdk.processImage(imagePath, settings, uploadCompleted);
+	// 	console.log("Uploading image..");
+	// 	ocrsdk.processImage(imagePath, settings, uploadCompleted);
 
-	} catch (err) {
-		console.log("Error: " + err.message);
-	}
+	// } catch (err) {
+	// 	console.log("Error: " + err.message);
+	// }
 };
