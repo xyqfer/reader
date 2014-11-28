@@ -16,7 +16,7 @@ module.exports = function(req, res) {
 	// Password should be sent to your e-mail after application was created
 	var password = 'XrmcliEauxX4TIM4LwDrIf90';
 
-	var imagePath = __dirname + '/routes/QQ20141128-2.png';
+	var imagePath = __dirname + '/routes/QQ20141128-3.png';
 	var outputPath = __dirname + '/routes/result.txt';
 
 	try {
