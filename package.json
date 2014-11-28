@@ -6,7 +6,8 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
-    "xml2js": "^0.4.4"
+    "xml2js": "^0.4.4",
+    "request": "^2.42.0"
   },
   "devDependencies": {}
 }

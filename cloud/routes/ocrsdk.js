@@ -8,6 +8,7 @@ var url = require("url");
 var sys = require("sys");
 var events = require("events");
 var fs = require('fs');
+var request = require('request');
 
 var xml2js = null;
 try {
@@ -167,26 +168,32 @@ ocrsdk.prototype.waitForCompletion = function(taskId, userCallback) {
  */
 ocrsdk.prototype.downloadResult = function(resultUrl, outputFilePath,
 		userCallback) {
-	var file = fs.createWriteStream(outputFilePath);
+	// var file = fs.createWriteStream(outputFilePath);
+	//console.log(resultUrl);
 
-	var parsed = url.parse(resultUrl);
-
-	var req = https.request(parsed, function(response) {
-		response.on('data', function(data) {
-			file.write(data);
-		});
-
-		response.on('end', function() {
-			file.end();
-			userCallback(null);
-		});
+	request(resultUrl, function(error, response, body) {
+		if (!error) {
+			userCallback(null, body);
+		}
 	});
 
-	req.on('error', function(e) {
-		userCallback(error);
-	});
+	// var parsed = url.parse(resultUrl);
+	// var req = https.request(parsed, function(response) {
+	// 	response.on('data', function(data) {
+	// 		file.write(data);
+	// 	});
 
-	req.end();
+	// 	response.on('end', function() {
+	// 		file.end();
+	// 		userCallback(null);
+	// 	});
+	// });
+
+	// req.on('error', function(e) {
+	// 	userCallback(error);
+	// });
+
+	// req.end();
 
 }
 

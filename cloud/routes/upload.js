@@ -17,7 +17,7 @@ module.exports = function(req, res) {
 	var password = 'XrmcliEauxX4TIM4LwDrIf90';
 
 	var imagePath = __dirname + '/routes/QQ20141128-3.png';
-	var outputPath = __dirname + '/routes/result1.txt';
+	var outputPath = __dirname + '/cloud/routes/result1.txt';
 
 	try {
 		console.log("ABBYY Cloud OCR SDK Sample for Node.js");
@@ -34,7 +34,7 @@ module.exports = function(req, res) {
 			throw new Error( "Please provide path to your image!")
 		}
 
-		function downloadCompleted(error) {
+		function downloadCompleted(error, text) {
 			if (error) {
 				console.log("Error: " + error.message);
 				return;
@@ -43,8 +43,8 @@ module.exports = function(req, res) {
 
 			// TODO
 
-			var fs = require('fs');
-			var text = fs.readFileSync(outputPath, 'utf-8');
+			// var fs = require('fs');
+			// var text = fs.readFileSync(outputPath, 'utf-8');
 			res.send(text);
 		}
 
