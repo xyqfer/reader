@@ -17,7 +17,7 @@ module.exports = function(req, res) {
 	var password = 'XrmcliEauxX4TIM4LwDrIf90';
 
 	var imagePath = __dirname + '/routes/QQ20141128-3.png';
-	var outputPath = __dirname + '/routes/result.txt';
+	var outputPath = __dirname + '/routes/result1.txt';
 
 	try {
 		console.log("ABBYY Cloud OCR SDK Sample for Node.js");
