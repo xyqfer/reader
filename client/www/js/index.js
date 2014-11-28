@@ -37,21 +37,48 @@ var app = {
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
-        document.getElementById("btn").addEventListener("click", function() {
-            navigator.camera.getPicture(onSuccess, onFail, { 
-                quality: 50,
-                destinationType: Camera.DestinationType.FILE_URI 
-            });
+        // document.getElementById("btn").addEventListener("click", function() {
+        //     navigator.camera.getPicture(onSuccess, onFail, { 
+        //         quality: 50,
+        //         destinationType: Camera.DestinationType.FILE_URI 
+        //     });
 
-            function onSuccess(imageURI) {
-                var image = document.getElementById('img');
-                image.src = imageURI;
-            }
+        //     function onSuccess(imageURI) {
+        //         var image = document.getElementById('img');
+        //         image.src = imageURI;
 
-            function onFail(message) {
-                alert('Failed because: ' + message);
-            }
-        }, false);
+        //         var fileURL = imageURI;
+        //         var win = function (r) {
+        //             console.log("Code = " + r.responseCode);
+        //             alert("Response = " + r.response);
+        //             console.log("Sent = " + r.bytesSent);
+        //         }
+
+        //         var fail = function (error) {
+        //             alert("An error has occurred: Code = " + error.code);
+        //             console.log("upload error source " + error.source);
+        //             console.log("upload error target " + error.target);
+        //         }
+
+        //         var options = new FileUploadOptions();
+        //         options.fileKey = "file";
+        //         options.fileName = fileURL.substr(fileURL.lastIndexOf('/') + 1);
+        //         options.mimeType = "image/jpeg";
+
+        //         var params = {};
+        //         params.value1 = "test";
+        //         params.value2 = "param";
+
+        //         options.params = params;
+
+        //         var ft = new FileTransfer();
+        //         ft.upload(fileURL, encodeURI("http://dev.paper-reader.avosapps.com/upload"), win, fail, options);
+        //     }
+
+        //     function onFail(message) {
+        //         alert('Failed because: ' + message);
+        //     }
+        // }, false);
     }
 };
 

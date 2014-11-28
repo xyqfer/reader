@@ -1,1 +1,0 @@
-Cloud code project for paper-reader. Cloud Code Guide: https://cn.avoscloud.com/docs/cloud_code_guide.html
