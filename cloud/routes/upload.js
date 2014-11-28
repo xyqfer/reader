@@ -20,7 +20,7 @@ module.exports = function(req, res) {
 	var outputPath = 'cloud/routes/result.txt';
 
 	var fs = require('fs');
-	var text = fs.readFileSync('cloud/routes/result.txt', 'utf-8');
+	var text = fs.readFileSync(__dirname + '/result.txt', 'utf-8');
 	res.send(text);
 	return;
 
