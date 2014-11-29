@@ -19,3 +19,6 @@ reader
 - 示意图片：
 
 	 ![image](http://epaper.southcn.com/nfdaily/page/1/2014-11/25/A03/20141125A03_brief.jpg)
+- 轮廓提取：openCV
+- OCR：Tesseract
+- TTS：讯飞语音
