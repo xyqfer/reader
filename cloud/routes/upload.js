@@ -8,7 +8,7 @@ module.exports = function(req, res) {
 	var outputPath = __dirname + '/cloud/routes/result1.txt';
 
 	var fs = require('fs');
-
+	console.dir(req.files);
 	var iconFile = req.files.file;
 	  if(iconFile) {
 	    fs.readFile(iconFile.path, function(err, data){
