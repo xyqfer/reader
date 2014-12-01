@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">PicUpload</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="take_photo">Take a Photo</string>
+    <string name="upload_server">Upload</string>
+    <string name="uploaded">Successfully uploaded</string>
+
+</resources>
