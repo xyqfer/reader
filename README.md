@@ -80,5 +80,45 @@ reader
 		- 使用 Tesseract 实现。Tesseract 是用 C++ 实现的，从 3.0 版本开始支持对中文的识别，需要封装 Java API 用于 Android 平台的调用。本课题使用的是 Tesseract-two，其集成了图形处理工具 leptonica，非常方便使用。	- 朗读
 		- 使用讯飞语音实现，支持多种方式发音。只需调用系统提供的 TextToSpeech 类并实现相应的 onInit ，onDestroy 等接口即可。
 	- 存储
-		- Android 系统一共提供了四种数据存储方式。分别是SharePreference、SQLite、Content Provider 和File。本课题使用 Content Provider，这是一种能实现所有应用程序共享的一种数据存储方式，音频，视频，图片和通讯录通常使用该方式存储。每个Content Provider都会对外提供一个公共的URI（包装成Uri对象），如果应用程序有数据需要共享时，就需要使用Content Provider为这些数据定义一个URI，然后其他的应用程序就通过Content Provider传入这个URI来对数据进行操作。
+		- Android 系统一共提供了四种数据存储方式。分别是SharePreference、SQLite、Content Provider 和File。本课题使用 Content Provider，这是一种能实现所有应用程序共享的一种数据存储方式，音频，视频，图片和通讯录通常使用该方式存储。每个Content Provider都会对外提供一个公共的URI（包装成Uri对象），如果应用程序有数据需要共享时，就需要使用Content Provider为这些数据定义一个URI，然后其他的应用程序就通过Content Provider传入这个URI来对数据进行操作。- 论文提纲
+	- 引言
+		- 课题背景
+		- 课题任务
+		- 论文结构
+	- 开发环境及相关技术
+		- Android简介
+		- Android SDK
+		- Android平台开发语言
+		- Android 开发IDE
+		- 本章小结
+	- 报纸阅读器的需求分析
+		- 业务描述
+		- 业务处理流程
+		- 客户需求分析
+		- 本章小结
+	- 报纸阅读器的功能设计
+		- 客户端业务流程
+		- UI组件布局
+		- 拍照
+		- 定位内容
+		- 文字识别
+		- 朗读文字
+		- 存储内容
+		- 本章小结
+	- 报纸阅读器的实现
+		- 项目开发软硬件平台
+		- 项目创建
+		- 软件功能架构
+		- 软件功能实现
+		- 本章小结
+	- 结束语
+		- 论文工作总结
+		- 展望
+	- 参考文献
+	- 致谢
+- 实施计划
+	- 3.1——4.1：完成1、2、3章内容
+	- 4.1——5.15：完成4、5章内容
+	- 5.15——答辩：完成6章内容	
+	
 
