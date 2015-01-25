@@ -161,5 +161,44 @@ reader
 - 语音识别
 	- 语音识别是该系统的非常重要的部分，在该阶段从扬声器实时获得语音样本并存储以便于进行预处理。我们需要麦克风接收语音信号用于语音识别。语音采集可以容易地由移动电话中麦克风中进行采集。在采集阶段的不同的M/ C是取决于其自己的配置，因此不存在需要存储不同用户的样本，以使系统更兼容于任何类型的语音。实施了基于HMM的自动语音识别。对于连续音素识别，在正常听力的情况下达到了86％的正确率。为了实现语音预处理使用了Sphinx框架进行工作，这是发现默认语音信号的最佳工具。Sphinx设计成具有高灵活性和模块化的特点。识别或模式分类是测试模式和每个参考图案之间比较与每个声音类基准图案的未知的测试模式和计算的相似性（距离）的量度的处理。数字使用了最大似然估计，如维特比译码算法，这意味着它的模型具有最大概率的数字。预处理，特征向量提取和码本产生是类似的HMM训练。输入的语音样本被用来进行预处理和特征矢量提取。然后，对于每个帧最接近的码本向量的索引被发送到所有的数字模型。具有最大概率的模型被选择为识别的数字。[1]。
 - 语音预处理
-	- 实时语音需要无噪声的语音信号因此需要降低和剔除包括背景噪声在内的噪声。预处理降低了下一阶段所需付出的努力。将语音信号输入到语音预处理程序，然后转换成语音帧，下面给出独特样本的步骤：1.系统必须从语音信号中识别出有用的样品。为了实现这一目标，该系统将上述语音样本分割成重叠的帧。2.系统使用端点检测和能量阈值的计算来为语音活动执行检查。3.语音样本接下来通过一个预加重滤波器。4.与话音活动的帧通过一个汉明窗口。系统执行的每帧的自相关分析。6.系统使用的列文森和Durbin算法找到线性预测编码（LPC）系数。我们对每个帧应用汉明窗口来在信号的开始和结束取得最小的不连续。[1]。	
+	- 实时语音需要无噪声的语音信号因此需要降低和剔除包括背景噪声在内的噪声。预处理降低了下一阶段所需付出的努力。将语音信号输入到语音预处理程序，然后转换成语音帧，下面给出独特样本的步骤：1.系统必须从语音信号中识别出有用的样品。为了实现这一目标，该系统将上述语音样本分割成重叠的帧。2.系统使用端点检测和能量阈值的计算来为语音活动执行检查。3.语音样本接下来通过一个预加重滤波器。4.与话音活动的帧通过一个汉明窗口。系统执行的每帧的自相关分析。6.系统使用的列文森和Durbin算法找到线性预测编码（LPC）系数。我们对每个帧应用汉明窗口来在信号的开始和结束取得最小的不连续。[1]。	- HMM训练
+	- 利用模式识别来将语音转成文本的一个重要部分是训练。训练包括创建一类使用一个或多个测试的模式，对应于同一类的语音功能模式的代表。模型通常用于语音识别的隐马尔可夫模型，是一种用于使用所观察到的输出序列的统计模型未知系统的建模。该系统采用鲍姆韦尔奇算法在词汇表中对每个数字进行HMM训练。预处理期间创建的码本索引是HMM模型的观测向量。[1]。
+	- 语音短信的语音识别应用谷歌服务器和HMM算法完成。HMM算法将简单地在这部分进行描述。该过程涉及到将语音转换成一组字，并通过软件执行。语音识别系统的准确度受不同的词汇量和混淆性，发言者的依赖与独立，讲话方式（孤立的，不连续的，或连续语音，阅读或自发的讲话），任务和语言的限制[10]。
+	- 提出的工作方法：
+		- 设计模块：该项目将文本消息转换成语音。在运行时文本数据从短信中取出，并转换成语音帧的语音帧，然后通过对预处理和采样的帧的预处理后再通过基于HMM的训练被施加在语音帧。
+		- Fig:-2 text to Speech conversion system
+	- 方法：
+		- 1。语音合成技术将被用于在合成语音以得到接近自然语音的质量。
+		- 2。英语可以作为语音合成的基本单元。
+		- 3。英语的语音数据库将使用音素来开发。
+		- 4。印地语的语音数据库将使用音素来开发。
+		- 5。乌尔都语的语音数据库将使用音素来开发。
+		- 6。输入的文本将被分为英语音素。
+		- 7。在数据库中搜索对应音素的声音并级联合成输出的语音。
+	- 英语文本 - 英语语音转换算法：
+		- 上面的流程图显示英语文本到英文语音转换的基本工作流程。开始工作的时候，输入英语文本。获取输入文本后，将文本中的英文单词进行分割。一旦文本被分离后，查找与文字对应的语音。然后，组织这些语音到对应的一系列相应的文本。对应的语音合成后，语音合成与语音质量会被保持。
+		- 最后，应用程序在Android环境下实现。最后一步是实现正确性检查。整个工作使用Android 4.2版本进行。研究方案在下面的流程图中定义。
+		- fig 2.1
+		- Figure: 3 English Text to English speech conversion
+	- 印地语文本 - 印地语语音 转换算法：
+		- 上面的流程图显示的是印地语文本转换为印地语语音的基本工作流程。开始工作时，输入印地语文本。获取输入文本后，对文本中的词语进行分离。一旦文本被分离后，查找与文字对应的语音。然后，组织这些语音到对应的一系列相应的文本。对应的语音合成后，语音合成与语音质量会被保持。最后，应用程序在Android环境下实现。最后一步是实现正确性检查。整个工作使用Android 4.2版本进行。研究方案在下面的流程图中定义。
+		- fig3.1
+		- Figure: 4 Hindi Text to Hindi speech conversion
+	- 乌尔都语文本 - 乌尔都语语音 转换算法：
+		- 上面的流程图显示的是印地语文本转换为印地语语音的基本工作流程。开始工作时，输入乌尔都语文本。获取输入文本后，对文本中的词语进行分离。一旦文本被分离后，查找与文字对应的语音。然后，组织这些语音到对应的一系列相应的文本。对应的语音合成后，语音合成与语音质量会被保持。最后，应用程序在Android环境下实现。最后一步是实现正确性检查。整个工作使用Android 4.2版本进行。研究方案在下面的流程图中定义。
+		- fig5.1
+		- Figure: 5 Urdu Text to Urdu speech conversion
+- 结语
+	- 在建议的工作中我们建议将手机短信转换成语音通讯服务。同时保证语音质量。结果是，将英文文本以英文语音短信，区域语言（印地文）文字印地文语音和乌尔都语短信至乌尔都语语音和乌尔都语和印地文语音令人满意，语音发声是使用天然的大标点符号精度语言处理（NLP），我们提出了转换为每种语言的算法步骤。我们采取TTS解决了声音的等同问题，但有一个缺点，我们发现我们提出的模型是与其系统的语音相关的，因为应用程序都只能以只承认一个字并输出语音可能相同，当前工作已经完成了英语，印地文，和乌尔都语，但它也可以用于其它地区性语言。
+- 参考
+	- [1] Ms. Anuja Jadhav, Prof. Arvind Patil International Journal of Engineering Research and Applications (IJERA) ISSN: 2248-9622 www.ijera.com Vol. 2, Issue 2, Mar-Apr 2012, pp.1126-1128 1126| P a g e A Smart Texting System For Android Mobile Users Ms. Anuja Jadhav * Prof.  Arvind Patil** * (M.Tech. Student Y.C.C.E. Nagpur India) ** (Y.C.C.E., Nagpur, India).
+	- [2] B. Raghavendhar Reddy, E Mahender / International Journal of Engineering Research and Applications (IJERA) ISSN: 2248-9622 www.ijera.com Vol. 3, Issue 1, January -February 2013, pp.253-258 253 | P a g e Speech toText Conversion using Android Platform  B. Raghavendhar Reddy#1, E. Mahender*2 #1Department of Electronics Communication and Engineering Aurora’s Technological and Research Institute Parvathapur, Uppal, Hyderabad, India. 2Asst. Professor Aurora’s Technological and Research Institute Parvathapur, Uppal, Hyderabad, India.
+	- [3] Swati Ahlawat ,Rajiv Dahiya Electronics and Communication Engineering  PDM College of Engineering, bahadurgarh, IJCSMS International Journal of Computer Science & Management Studies, Vol. 13, Issue 05, July 2013 ISSN (Online): 2231 –5268, A NOVEL APPROACH OF TEXT TO SPEECH CONVERSION UNDER ANDROID ENVIRONMENT.
+	- [4] “Android developers”, http://developer.android.com 
+	- [5] Er. SheillyPadda, Er. Nidhi “A Step towards Making an Effective Text to Speech Conversion”,IJERA’ ISSN:2245-9622.
+	- [6] Aidan Kehoe,”Designing Help Topics for use with text to speech”, SIGDIC’06, October 18- 20,2006,myrtle beach, south carolina,USA.
+	- [7] Eyob B. Kaise,” Concatenative speech synthesis for Amharic using unit selection method”, MEDES’12, october 25-31,2012,addis ababa,ethiopia.
+	- [8] Erik Blankinship, “Tools for Expressive Text to Speech Markup” UIST’01 orlando FLO, november 11-14, 2001
+	- [9] Ankit Asthana,” IOS 5, Android 4.0 And Windows 8 – A Review.
+	- [10] J. Tebelskis, Speech Recognition using Neural Networks, Pittsburgh: School of Computer Science, Carnegie Mellon University, 1995.  
 
