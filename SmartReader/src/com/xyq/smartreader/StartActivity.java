@@ -39,22 +39,6 @@ public class StartActivity extends ActionBarActivity {
     private static String LANGUAGE = "chi_sim";
     private static String textResult;
     private static Bitmap bitmapSelected;
-    
-    public static Handler myHandler = new Handler() {
-
-		@Override
-		public void handleMessage(Message msg) {
-			switch (msg.what) {
-				case SHOWRESULT:
-					Log.i("showresult", textResult);
-					break;
-					
-				default:
-					break;
-			}
-			super.handleMessage(msg);
-		}
-	};
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,37 +69,12 @@ public class StartActivity extends ActionBarActivity {
     
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (resultCode == NONE)
-            return;
-        
         if (requestCode == PHOTO_GRAPH) {
-            File picture = new File(Environment.getExternalStorageDirectory() + "/temp.jpg");
-            startPhotoZoom(Uri.fromFile(picture));
-        }
-
-        if (data == null)
-            return;
-
-        if (requestCode == PHOTO_ZOOM) {
-            startPhotoZoom(data.getData());
-        }
-        
-        if (requestCode == PHOTO_RESOULT) {   
-    		Bundle bundle = data.getExtras();  
-    		Bitmap bitmap = (Bitmap) bundle.get("data");
-    		bitmapSelected = bitmap;
-    		new Thread(new Runnable() {
-				@Override
-				public void run() {
-					textResult = doOcr(bitmapSelected, LANGUAGE);
-					Message msg = new Message();
-					msg.what = SHOWRESULT;
-					myHandler.sendMessage(msg);
-//    					Looper.prepare();
-//    					Toast.makeText(StartActivity.this, textResult, Toast.LENGTH_SHORT).show();
-//    					Looper.loop();
-				}
-			}).start();
+            Intent intent = new Intent();
+            //intent.putExtra("path", Uri.fromFile(picture).toString());    
+            intent.setClass(StartActivity.this, CropImage.class);
+            
+            StartActivity.this.startActivity(intent);
         }
 
         super.onActivityResult(requestCode, resultCode, data);
@@ -125,44 +84,12 @@ public class StartActivity extends ActionBarActivity {
         Intent intent = new Intent("com.android.camera.action.CROP");
         intent.setDataAndType(uri, IMAGE_UNSPECIFIED);
         intent.putExtra("crop", "true");
-        intent.putExtra("aspectX", 1);
+        intent.putExtra("aspectX", 2);
         intent.putExtra("aspectY", 1);
         intent.putExtra("outputX", 300);
         intent.putExtra("outputY", 500);
+        intent.putExtra("scale", true);
         intent.putExtra("return-data", true);
         startActivityForResult(intent, PHOTO_RESOULT);
-    }
-    
-    public String doOcr(Bitmap bitmap, String language) {
-		TessBaseAPI baseApi = new TessBaseAPI();
-
-		baseApi.init(getSDPath(), language);
-
-		bitmap = bitmap.copy(Bitmap.Config.ARGB_8888, true);
-
-		baseApi.setImage(bitmap);
-
-		String text = baseApi.getUTF8Text();
-
-		baseApi.clear();
-		baseApi.end();
-
-		return text;
-	}
-    
-    public static String getSDPath() {
-		File sdDir = null;
-		boolean sdCardExist = Environment.getExternalStorageState().equals(
-				android.os.Environment.MEDIA_MOUNTED);
-		if (sdCardExist) {
-			sdDir = Environment.getExternalStorageDirectory();
-		}
-		return sdDir.toString();
-	}
-    
-    
-    
-    public void browserPaper(View v) {
-    	
     }
 }

@@ -1,0 +1,34 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" >
+
+    <ImageView
+        android:id="@+id/imageview"
+        android:layout_width="480dip"
+        android:layout_height="360dip" />
+
+    <Button
+        android:id="@+id/save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="400dip"
+        android:text="save" />
+
+    <Button
+        android:id="@+id/cencal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="400dip"
+        android:text="cencal" />
+
+    <ImageView
+        android:id="@+id/caijian"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="400dip"
+        android:layout_centerHorizontal="true"
+ />
+
+</RelativeLayout>

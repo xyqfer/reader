@@ -4,5 +4,13 @@
     <string name="app_name">智能阅读器</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    
+    <string name="crop_save_text" >"保存"</string>
+    <string name="crop_discard_text" >"舍弃"</string>
+    
+    <string name="wallpaper" >"正在设置壁纸..."</string>
+    <string name="savingImage" >"正在保存照片..."</string>
+    <string name="multiface_crop_help">"触摸一张脸开始裁剪。"</string>
+    <string name="runningFaceDetection">"请稍候..."</string>
 
 </resources>
