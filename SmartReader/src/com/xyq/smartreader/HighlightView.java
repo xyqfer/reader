@@ -349,6 +349,7 @@ class HighlightView {
                         (int) mCropRect.right, (int) mCropRect.bottom);
     }
 
+    // openCV todo
     // Maps the cropping rectangle from image space to screen space.
     private Rect computeLayout() {
         RectF r = new RectF(mCropRect.left, mCropRect.top,
@@ -361,7 +362,9 @@ class HighlightView {
     public void invalidate() {
         mDrawRect = computeLayout();
     }
-
+    
+    
+    // openCV todo
     public void setup(Matrix m, Rect imageRect, RectF cropRect, boolean circle,
                       boolean maintainAspectRatio) {
         if (circle) {

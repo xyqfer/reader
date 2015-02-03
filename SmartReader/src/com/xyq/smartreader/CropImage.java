@@ -21,6 +21,7 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
@@ -38,6 +39,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.provider.MediaStore;
+import android.speech.tts.TextToSpeech;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -53,7 +55,19 @@ import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import java.util.Locale;
 import java.util.concurrent.CountDownLatch;
+
+import org.opencv.android.BaseLoaderCallback;
+import org.opencv.android.LoaderCallbackInterface;
+import org.opencv.android.OpenCVLoader;
+import org.opencv.android.Utils;
+import org.opencv.core.Mat;
+import org.opencv.core.MatOfPoint;
+import org.opencv.core.MatOfPoint2f;
+import org.opencv.core.Point;
+import org.opencv.imgproc.Imgproc;
 
 import com.googlecode.tesseract.android.TessBaseAPI;
 /**
@@ -95,6 +109,29 @@ public class CropImage extends MonitoredActivity {
     private static Bitmap bitmapSelected;
     private static final int SHOWRESULT = 0x101;
     
+    private TextToSpeech tts = null;
+    
+    private BaseLoaderCallback  mLoaderCallback = new BaseLoaderCallback(this) {  
+        @Override  
+        public void onManagerConnected(int status) {  
+            switch (status) {  
+                case LoaderCallbackInterface.SUCCESS:{  
+                } break;  
+                default:{  
+                    super.onManagerConnected(status);  
+                } break;  
+            }  
+        }  
+    };
+    
+    @Override  
+    public void onResume(){  
+        super.onResume();  
+        //通过OpenCV引擎服务加载并初始化OpenCV类库，所谓OpenCV引擎服务即是  
+        //OpenCV_2.4.3.2_Manager_2.4_*.apk程序包，存在于OpenCV安装包的apk目录中  
+        OpenCVLoader.initAsync(OpenCVLoader.OPENCV_VERSION_2_4_10, this, mLoaderCallback);  
+    } 
+    
 //    public static Handler myHandler = new Handler() {
 //
 //		@Override
@@ -118,6 +155,26 @@ public class CropImage extends MonitoredActivity {
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.cropimage);
+        
+        tts = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int status) {
+                // TODO Auto-generated method stub
+                if (status == TextToSpeech.SUCCESS)
+                {
+                    int result = tts.setLanguage(Locale.CHINA);
+                    if (result == TextToSpeech.LANG_MISSING_DATA
+                            || result == TextToSpeech.LANG_NOT_SUPPORTED)
+                    {
+                        Toast.makeText(getApplicationContext(), "Language is not available.",
+                                Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                	Toast.makeText(getApplicationContext(), "Language is available.",
+                            Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
         mImageView = (CropImageView) findViewById(R.id.image);
 
@@ -335,6 +392,86 @@ public class CropImage extends MonitoredActivity {
                         mOutputX, mOutputY, mScaleUp, Util.RECYCLE_INPUT);
             }
         }
+        
+        // openCV test
+//        Mat rgbMat = new Mat();  
+//        Mat grayMat = new Mat();  
+//        //获取lena彩色图像所对应的像素数据  
+//        Utils.bitmapToMat(croppedImage, rgbMat);  
+//        //将彩色图像数据转换为灰度图像数据并存储到grayMat中  
+//        Imgproc.cvtColor(rgbMat, grayMat, Imgproc.COLOR_RGB2GRAY);  
+//        //创建一个灰度图像  
+//        Bitmap grayBmp = Bitmap.createBitmap(croppedImage.getWidth(), croppedImage.getHeight(), Config.RGB_565);  
+//        //将矩阵grayMat转换为灰度图像  
+//        Utils.matToBitmap(grayMat, grayBmp);  
+        //imageView.setImageBitmap(grayBmp);
+        
+        //point test
+        //convert the image to black and white
+//        Mat imgSource = new Mat();
+//        Mat grayMat = new Mat();
+//        Utils.bitmapToMat(croppedImage, imgSource);
+//        Imgproc.cvtColor(imgSource, imgSource, Imgproc.COLOR_BGR2GRAY);
+//        Imgproc.Canny(imgSource, imgSource, 50, 50);
+//
+//        //apply gaussian blur to smoothen lines of dots
+//        Imgproc.GaussianBlur(imgSource, imgSource, new  org.opencv.core.Size(5, 5), 5);
+//
+//        //find the contours
+//        List<MatOfPoint> contours = new ArrayList<MatOfPoint>();
+//        Imgproc.findContours(imgSource, contours, new Mat(), Imgproc.RETR_LIST, Imgproc.CHAIN_APPROX_SIMPLE);
+//
+//        double maxArea = -1;
+//        int maxAreaIdx = -1;
+//        Log.d("size",Integer.toString(contours.size()));
+//        MatOfPoint temp_contour = contours.get(0); //the largest is at the index 0 for starting point
+//        MatOfPoint2f approxCurve = new MatOfPoint2f();
+//        MatOfPoint largest_contour = contours.get(0);
+//        //largest_contour.ge
+//        List<MatOfPoint> largest_contours = new ArrayList<MatOfPoint>();
+//        //Imgproc.drawContours(imgSource,contours, -1, new Scalar(0, 255, 0), 1);
+//
+//        for (int idx = 0; idx < contours.size(); idx++) {
+//            temp_contour = contours.get(idx);
+//            double contourarea = Imgproc.contourArea(temp_contour);
+//            //compare this contour to the previous largest contour found
+//            if (contourarea > maxArea) {
+//                //check if this contour is a square
+//                MatOfPoint2f new_mat = new MatOfPoint2f( temp_contour.toArray() );
+//                int contourSize = (int)temp_contour.total();
+//                MatOfPoint2f approxCurve_temp = new MatOfPoint2f();
+//                Imgproc.approxPolyDP(new_mat, approxCurve_temp, contourSize*0.05, true);
+//                if (approxCurve_temp.total() == 4) {
+//                    maxArea = contourarea;
+//                    maxAreaIdx = idx;
+//                    approxCurve=approxCurve_temp;
+//                    largest_contour = temp_contour;
+//                }
+//            }
+//        }
+//
+//       Imgproc.cvtColor(imgSource, imgSource, Imgproc.COLOR_BayerBG2RGB);
+//       //sourceImage =Highgui.imread(Environment.getExternalStorageDirectory().
+//       //          getAbsolutePath() +"/scan/p/1.jpg");
+//       double[] temp_double;
+//       temp_double = approxCurve.get(0,0);       
+//       Point p1 = new Point(temp_double[0], temp_double[1]);
+//       Log.i("p1", temp_double[0] + " " + temp_double[1]);
+//       //Core.circle(imgSource,p1,55,new Scalar(0,0,255));
+//       //Imgproc.warpAffine(sourceImage, dummy, rotImage,sourceImage.size());
+//       temp_double = approxCurve.get(1,0);       
+//       Point p2 = new Point(temp_double[0], temp_double[1]);
+//       Log.i("p2", temp_double[0] + " " + temp_double[1]);
+//      // Core.circle(imgSource,p2,150,new Scalar(255,255,255));
+//       temp_double = approxCurve.get(2,0);       
+//       Point p3 = new Point(temp_double[0], temp_double[1]);
+//       Log.i("p3", temp_double[0] + " " + temp_double[1]);
+//       //Core.circle(imgSource,p3,200,new Scalar(255,0,0));
+//       temp_double = approxCurve.get(3,0);       
+//       Point p4 = new Point(temp_double[0], temp_double[1]);
+//       Log.i("p4", temp_double[0] + " " + temp_double[1]);
+       
+       // end test
 
         mImageView.setImageBitmapResetBase(croppedImage, true);
         mImageView.center(true, true);
@@ -342,45 +479,46 @@ public class CropImage extends MonitoredActivity {
         
         bitmapSelected = croppedImage;
         
-        new Thread(new Runnable() {
-			@Override
-			public void run() {
-					textResult = doOcr(bitmapSelected, LANGUAGE);
-					Log.i("showresult", textResult);
-					Looper.prepare();
-					Toast.makeText(CropImage.this, textResult, Toast.LENGTH_SHORT).show();
-					Looper.loop();
-			}
-
-			private String doOcr(Bitmap bitmap, String language) {
-				// TODO Auto-generated method stub
-				TessBaseAPI baseApi = new TessBaseAPI();
-
-				baseApi.init(getSDPath(), language);
-
-				bitmap = bitmap.copy(Bitmap.Config.ARGB_8888, true);
-
-				baseApi.setImage(bitmap);
-
-				String text = baseApi.getUTF8Text();
-
-				baseApi.clear();
-				baseApi.end();
-
-				return text;
-			}
-
-			private String getSDPath() {
-				// TODO Auto-generated method stub
-				File sdDir = null;
-				boolean sdCardExist = Environment.getExternalStorageState().equals(
-						android.os.Environment.MEDIA_MOUNTED);
-				if (sdCardExist) {
-					sdDir = Environment.getExternalStorageDirectory();
-				}
-				return sdDir.toString();
-			}
-		}).start();
+//        new Thread(new Runnable() {
+//			@Override
+//			public void run() {
+//					textResult = doOcr(bitmapSelected, LANGUAGE);
+//					tts.speak(textResult, TextToSpeech.QUEUE_FLUSH, null);
+//					Log.i("showresult", textResult);
+//					Looper.prepare();
+//					Toast.makeText(CropImage.this, textResult, Toast.LENGTH_SHORT).show();
+//					Looper.loop();
+//			}
+//
+//			private String doOcr(Bitmap bitmap, String language) {
+//				// TODO Auto-generated method stub
+//				TessBaseAPI baseApi = new TessBaseAPI();
+//
+//				baseApi.init(getSDPath(), language);
+//
+//				bitmap = bitmap.copy(Bitmap.Config.ARGB_8888, true);
+//
+//				baseApi.setImage(bitmap);
+//
+//				String text = baseApi.getUTF8Text();
+//
+//				baseApi.clear();
+//				baseApi.end();
+//
+//				return text;
+//			}
+//
+//			private String getSDPath() {
+//				// TODO Auto-generated method stub
+//				File sdDir = null;
+//				boolean sdCardExist = Environment.getExternalStorageState().equals(
+//						android.os.Environment.MEDIA_MOUNTED);
+//				if (sdCardExist) {
+//					sdDir = Environment.getExternalStorageDirectory();
+//				}
+//				return sdDir.toString();
+//			}
+//		}).start();
 
         // croppedImage
         // Return the cropped image directly or save it to the specified URI.
@@ -588,9 +726,74 @@ public class CropImage extends MonitoredActivity {
 
             int x = (width - cropWidth) / 2;
             int y = (height - cropHeight) / 2;
+            
+            Mat imgSource = new Mat();
+            Utils.bitmapToMat(mBitmap, imgSource);
+            //convert the image to black and white 
+            Imgproc.cvtColor(imgSource, imgSource, Imgproc.COLOR_BGR2GRAY);
+            //convert the image to black and white does (8 bit)
+            Imgproc.Canny(imgSource, imgSource, 50, 50);
+
+            //apply gaussian blur to smoothen lines of dots
+            Imgproc.GaussianBlur(imgSource, imgSource, new  org.opencv.core.Size(5, 5), 5);
+
+            //find the contours
+            List<MatOfPoint> contours = new ArrayList<MatOfPoint>();
+            Imgproc.findContours(imgSource, contours, new Mat(), Imgproc.RETR_LIST, Imgproc.CHAIN_APPROX_SIMPLE);
+
+            double maxArea = -1;
+            int maxAreaIdx = -1;
+            Log.d("size",Integer.toString(contours.size()));
+            MatOfPoint temp_contour = contours.get(0); //the largest is at the index 0 for starting point
+            MatOfPoint2f approxCurve = new MatOfPoint2f();
+            MatOfPoint largest_contour = contours.get(0);
+            //largest_contour.ge
+            List<MatOfPoint> largest_contours = new ArrayList<MatOfPoint>();
+            //Imgproc.drawContours(imgSource,contours, -1, new Scalar(0, 255, 0), 1);
+
+            for (int idx = 0; idx < contours.size(); idx++) {
+                temp_contour = contours.get(idx);
+                double contourarea = Imgproc.contourArea(temp_contour);
+                //compare this contour to the previous largest contour found
+                if (contourarea > maxArea) {
+                    //check if this contour is a square
+                    MatOfPoint2f new_mat = new MatOfPoint2f( temp_contour.toArray() );
+                    int contourSize = (int)temp_contour.total();
+                    MatOfPoint2f approxCurve_temp = new MatOfPoint2f();
+                    Imgproc.approxPolyDP(new_mat, approxCurve_temp, contourSize*0.05, true);
+                    if (approxCurve_temp.total() == 4) {
+                        maxArea = contourarea;
+                        maxAreaIdx = idx;
+                        approxCurve=approxCurve_temp;
+                        largest_contour = temp_contour;
+                    }
+                }
+            }
+
+           Imgproc.cvtColor(imgSource, imgSource, Imgproc.COLOR_BayerBG2RGB);
+           double[] temp_double;
+           float x1, y1, x2, y2;
+           temp_double = approxCurve.get(0,0);       
+           Point p1 = new Point(temp_double[0], temp_double[1]);
+           x1 = (float)temp_double[0];
+           y1 = (float)temp_double[1];
+           //Core.circle(imgSource,p1,55,new Scalar(0,0,255));
+           //Imgproc.warpAffine(sourceImage, dummy, rotImage,sourceImage.size());
+           temp_double = approxCurve.get(1,0);       
+           Point p2 = new Point(temp_double[0], temp_double[1]);
+          // Core.circle(imgSource,p2,150,new Scalar(255,255,255));
+           temp_double = approxCurve.get(2,0);       
+           Point p3 = new Point(temp_double[0], temp_double[1]);
+           x2 = (float)temp_double[0];
+           y2 = (float)temp_double[1];
+           //Core.circle(imgSource,p3,200,new Scalar(255,0,0));
+           temp_double = approxCurve.get(3,0);       
+           Point p4 = new Point(temp_double[0], temp_double[1]);
 
             RectF cropRect = new RectF(x, y, x + cropWidth, y + cropHeight);
+            //RectF cropRect = new RectF(x1, y1, x2, y2);
          // �����辩缉���
+            
             hv.setup(mImageMatrix, imageRect, cropRect, mCircleCrop,false
                      /*mAspectX != 0 && mAspectY != 0*/);
             mImageView.add(hv);
@@ -631,13 +834,14 @@ public class CropImage extends MonitoredActivity {
             mHandler.post(new Runnable() {
                 public void run() {
                     mWaitingToPick = mNumFaces > 1;
-                    if (mNumFaces > 0) {
-                        for (int i = 0; i < mNumFaces; i++) {
-                            handleFace(mFaces[i]);
-                        }
-                    } else {
-                        makeDefault();
-                    }
+//                    if (mNumFaces > 0) {
+//                        for (int i = 0; i < mNumFaces; i++) {
+//                            handleFace(mFaces[i]);
+//                        }
+//                    } else {
+//                        makeDefault();
+//                    }
+                    makeDefault();
                     mImageView.invalidate();
                     if (mImageView.mHighlightViews.size() == 1) {
                         mCrop = mImageView.mHighlightViews.get(0);
