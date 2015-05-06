@@ -1,4 +1,6 @@
 /Users/xingyongqiang/my/graduation-design/SmartReader/platforms/android/ant-build/classes.dex : \
+/Users/xingyongqiang/my/graduation-design/SmartReader/platforms/android/ant-build/classes/com/develcode/plugins/volumeControl/VolumeControl.class \
+/Users/xingyongqiang/my/graduation-design/SmartReader/platforms/android/ant-build/classes/com/ohh2ahh/appavailability/AppAvailability.class \
 /Users/xingyongqiang/my/graduation-design/SmartReader/platforms/android/ant-build/classes/com/wordsbaking/cordova/tts/TTS$1.class \
 /Users/xingyongqiang/my/graduation-design/SmartReader/platforms/android/ant-build/classes/com/wordsbaking/cordova/tts/TTS.class \
 /Users/xingyongqiang/my/graduation-design/SmartReader/platforms/android/ant-build/classes/com/xyq/smartreader/BuildConfig.class \
@@ -8,6 +10,8 @@
 /Users/xingyongqiang/my/graduation-design/SmartReader/platforms/android/ant-build/classes/com/xyq/smartreader/R$string.class \
 /Users/xingyongqiang/my/graduation-design/SmartReader/platforms/android/ant-build/classes/com/xyq/smartreader/R$xml.class \
 /Users/xingyongqiang/my/graduation-design/SmartReader/platforms/android/ant-build/classes/com/xyq/smartreader/R.class \
+/Users/xingyongqiang/my/graduation-design/SmartReader/platforms/android/ant-build/classes/fr/smile/cordova/fileopener/FileOpener$1.class \
+/Users/xingyongqiang/my/graduation-design/SmartReader/platforms/android/ant-build/classes/fr/smile/cordova/fileopener/FileOpener.class \
 /Users/xingyongqiang/my/graduation-design/SmartReader/platforms/android/ant-build/classes/hu/dpal/phonegap/plugins/CallbackProgressDialog.class \
 /Users/xingyongqiang/my/graduation-design/SmartReader/platforms/android/ant-build/classes/hu/dpal/phonegap/plugins/SpinnerDialog$1$1.class \
 /Users/xingyongqiang/my/graduation-design/SmartReader/platforms/android/ant-build/classes/hu/dpal/phonegap/plugins/SpinnerDialog$1.class \
@@ -36,6 +40,7 @@
 /Users/xingyongqiang/my/graduation-design/SmartReader/platforms/android/ant-build/classes/org/apache/cordova/dialogs/Notification$6$1.class \
 /Users/xingyongqiang/my/graduation-design/SmartReader/platforms/android/ant-build/classes/org/apache/cordova/dialogs/Notification$6.class \
 /Users/xingyongqiang/my/graduation-design/SmartReader/platforms/android/ant-build/classes/org/apache/cordova/dialogs/Notification.class \
+/Users/xingyongqiang/my/graduation-design/SmartReader/platforms/android/ant-build/classes/org/apache/cordova/file/AssetFilesystem.class \
 /Users/xingyongqiang/my/graduation-design/SmartReader/platforms/android/ant-build/classes/org/apache/cordova/file/ContentFilesystem.class \
 /Users/xingyongqiang/my/graduation-design/SmartReader/platforms/android/ant-build/classes/org/apache/cordova/file/DirectoryManager.class \
 /Users/xingyongqiang/my/graduation-design/SmartReader/platforms/android/ant-build/classes/org/apache/cordova/file/EncodingException.class \
@@ -91,4 +96,21 @@
 /Users/xingyongqiang/my/graduation-design/SmartReader/platforms/android/ant-build/classes/org/apache/cordova/filetransfer/FileTransfer$TrackingInputStream.class \
 /Users/xingyongqiang/my/graduation-design/SmartReader/platforms/android/ant-build/classes/org/apache/cordova/filetransfer/FileTransfer.class \
 /Users/xingyongqiang/my/graduation-design/SmartReader/platforms/android/ant-build/classes/org/apache/cordova/filetransfer/FileUploadResult.class \
+/Users/xingyongqiang/my/graduation-design/SmartReader/platforms/android/ant-build/classes/org/apache/cordova/inappbrowser/InAppBrowser$1.class \
+/Users/xingyongqiang/my/graduation-design/SmartReader/platforms/android/ant-build/classes/org/apache/cordova/inappbrowser/InAppBrowser$2.class \
+/Users/xingyongqiang/my/graduation-design/SmartReader/platforms/android/ant-build/classes/org/apache/cordova/inappbrowser/InAppBrowser$3.class \
+/Users/xingyongqiang/my/graduation-design/SmartReader/platforms/android/ant-build/classes/org/apache/cordova/inappbrowser/InAppBrowser$4$1.class \
+/Users/xingyongqiang/my/graduation-design/SmartReader/platforms/android/ant-build/classes/org/apache/cordova/inappbrowser/InAppBrowser$4.class \
+/Users/xingyongqiang/my/graduation-design/SmartReader/platforms/android/ant-build/classes/org/apache/cordova/inappbrowser/InAppBrowser$5$1.class \
+/Users/xingyongqiang/my/graduation-design/SmartReader/platforms/android/ant-build/classes/org/apache/cordova/inappbrowser/InAppBrowser$5$2.class \
+/Users/xingyongqiang/my/graduation-design/SmartReader/platforms/android/ant-build/classes/org/apache/cordova/inappbrowser/InAppBrowser$5$3.class \
+/Users/xingyongqiang/my/graduation-design/SmartReader/platforms/android/ant-build/classes/org/apache/cordova/inappbrowser/InAppBrowser$5$4.class \
+/Users/xingyongqiang/my/graduation-design/SmartReader/platforms/android/ant-build/classes/org/apache/cordova/inappbrowser/InAppBrowser$5.class \
+/Users/xingyongqiang/my/graduation-design/SmartReader/platforms/android/ant-build/classes/org/apache/cordova/inappbrowser/InAppBrowser$InAppBrowserClient.class \
+/Users/xingyongqiang/my/graduation-design/SmartReader/platforms/android/ant-build/classes/org/apache/cordova/inappbrowser/InAppBrowser.class \
+/Users/xingyongqiang/my/graduation-design/SmartReader/platforms/android/ant-build/classes/org/apache/cordova/inappbrowser/InAppBrowserDialog.class \
+/Users/xingyongqiang/my/graduation-design/SmartReader/platforms/android/ant-build/classes/org/apache/cordova/inappbrowser/InAppChromeClient.class \
+/Users/xingyongqiang/my/graduation-design/SmartReader/platforms/android/ant-build/classes/org/apache/cordova/networkinformation/NetworkManager$1.class \
+/Users/xingyongqiang/my/graduation-design/SmartReader/platforms/android/ant-build/classes/org/apache/cordova/networkinformation/NetworkManager.class \
+/Users/xingyongqiang/my/graduation-design/SmartReader/platforms/android/ant-build/classes/sk/tamex/cordova/plugins/LocationAndSettings.class \
 /Users/xingyongqiang/my/graduation-design/SmartReader/platforms/android/ant-build/dexedLibs/classes-615e2a137911ab76cfa3231d10e41050.jar \

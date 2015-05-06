@@ -1,0 +1,24 @@
+{
+    "version": "1.0.1",
+    "name": "sk.tamex.locationandsettings",
+    "cordova_name": "Location And Settings",
+    "description": "Open WirelessSettings,WifiSettings,LocationSettings. Check if Gps or Wireless Network Location is enabled.",
+    "license": "MIT",
+    "keywords": [
+        "android",
+        " Wireless Settings",
+        " Wifi Settings",
+        " Location Settings",
+        " GPS location",
+        " Wireless Network Location"
+    ],
+    "platforms": [
+        "android"
+    ],
+    "engines": [
+        {
+            "name": "cordova-android",
+            "version": ">=3.0.0"
+        }
+    ]
+}

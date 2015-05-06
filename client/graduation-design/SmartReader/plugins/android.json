@@ -19,7 +19,35 @@
                 "parents": {
                     "/*": [
                         {
+                            "xml": "<feature name=\"SpinnerDialog\"><param name=\"android-package\" value=\"hu.dpal.phonegap.plugins.SpinnerDialog\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Notification\"><param name=\"android-package\" value=\"org.apache.cordova.dialogs.Notification\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"NetworkStatus\"><param name=\"android-package\" value=\"org.apache.cordova.networkinformation.NetworkManager\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"AppAvailability\"><param name=\"android-package\" value=\"com.ohh2ahh.appavailability.AppAvailability\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"InAppBrowser\"><param name=\"android-package\" value=\"org.apache.cordova.inappbrowser.InAppBrowser\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"VolumeControl\"><param name=\"android-package\" value=\"com.develcode.plugins.volumeControl.VolumeControl\" /></feature>",
+                            "count": 1
+                        },
+                        {
                             "xml": "<feature name=\"Camera\"><param name=\"android-package\" value=\"org.apache.cordova.camera.CameraLauncher\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"LocationAndSettings\"><param name=\"android-package\" value=\"sk.tamex.cordova.plugins.LocationAndSettings\" /></feature>",
                             "count": 1
                         },
                         {
@@ -29,14 +57,6 @@
                         {
                             "xml": "<feature name=\"FileTransfer\"><param name=\"android-package\" value=\"org.apache.cordova.filetransfer.FileTransfer\" /></feature>",
                             "count": 1
-                        },
-                        {
-                            "xml": "<feature name=\"SpinnerDialog\"><param name=\"android-package\" value=\"hu.dpal.phonegap.plugins.SpinnerDialog\" /></feature>",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<feature name=\"Notification\"><param name=\"android-package\" value=\"org.apache.cordova.dialogs.Notification\" /></feature>",
-                            "count": 1
                         }
                     ]
                 }
@@ -45,25 +65,42 @@
                 "parents": {
                     "/*": [
                         {
+                            "xml": "<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\" />",
+                            "count": 1
+                        },
+                        {
                             "xml": "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\" />",
-                            "count": 3
+                            "count": 2
                         }
                     ],
-                    "/manifest/application": []
+                    "/manifest/application": [],
+                    "/manifest": [
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.MODIFY_AUDIO_SETTINGS\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.INTERNET\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.ACCESS_WIFI_STATE\" />",
+                            "count": 1
+                        }
+                    ]
                 }
             }
         }
     },
     "installed_plugins": {
-        "daan.cordova.camera": {
-            "PACKAGE_NAME": "com.xyq.smartreader"
-        },
-        "org.apache.cordova.file": {
-            "PACKAGE_NAME": "com.xyq.smartreader"
-        },
-        "org.apache.cordova.file-transfer": {
-            "PACKAGE_NAME": "com.xyq.smartreader"
-        },
         "hu.dpal.phonegap.plugins.SpinnerDialog": {
             "PACKAGE_NAME": "com.xyq.smartreader"
         },
@@ -71,6 +108,30 @@
             "PACKAGE_NAME": "com.xyq.smartreader"
         },
         "org.apache.cordova.dialogs": {
+            "PACKAGE_NAME": "com.xyq.smartreader"
+        },
+        "org.apache.cordova.network-information": {
+            "PACKAGE_NAME": "com.xyq.smartreader"
+        },
+        "com.ohh2ahh.plugins.appavailability": {
+            "PACKAGE_NAME": "com.xyq.smartreader"
+        },
+        "org.apache.cordova.inappbrowser": {
+            "PACKAGE_NAME": "com.xyq.smartreader"
+        },
+        "com.develcode.plugins.volumeControl": {
+            "PACKAGE_NAME": "com.xyq.smartreader"
+        },
+        "org.apache.cordova.camera": {
+            "PACKAGE_NAME": "com.xyq.smartreader"
+        },
+        "sk.tamex.locationandsettings": {
+            "PACKAGE_NAME": "com.xyq.smartreader"
+        },
+        "org.apache.cordova.file": {
+            "PACKAGE_NAME": "com.xyq.smartreader"
+        },
+        "org.apache.cordova.file-transfer": {
             "PACKAGE_NAME": "com.xyq.smartreader"
         }
     },

@@ -5,8 +5,29 @@
         <param name="android-package" value="com.wordsbaking.cordova.tts.TTS" />
         <param name="onload" value="true" />
     </feature>
+    <feature name="SpinnerDialog">
+        <param name="android-package" value="hu.dpal.phonegap.plugins.SpinnerDialog" />
+    </feature>
+    <feature name="Notification">
+        <param name="android-package" value="org.apache.cordova.dialogs.Notification" />
+    </feature>
+    <feature name="NetworkStatus">
+        <param name="android-package" value="org.apache.cordova.networkinformation.NetworkManager" />
+    </feature>
+    <feature name="AppAvailability">
+        <param name="android-package" value="com.ohh2ahh.appavailability.AppAvailability" />
+    </feature>
+    <feature name="InAppBrowser">
+        <param name="android-package" value="org.apache.cordova.inappbrowser.InAppBrowser" />
+    </feature>
+    <feature name="VolumeControl">
+        <param name="android-package" value="com.develcode.plugins.volumeControl.VolumeControl" />
+    </feature>
     <feature name="Camera">
         <param name="android-package" value="org.apache.cordova.camera.CameraLauncher" />
+    </feature>
+    <feature name="LocationAndSettings">
+        <param name="android-package" value="sk.tamex.cordova.plugins.LocationAndSettings" />
     </feature>
     <feature name="File">
         <param name="android-package" value="org.apache.cordova.file.FileUtils" />
@@ -14,12 +35,6 @@
     </feature>
     <feature name="FileTransfer">
         <param name="android-package" value="org.apache.cordova.filetransfer.FileTransfer" />
-    </feature>
-    <feature name="SpinnerDialog">
-        <param name="android-package" value="hu.dpal.phonegap.plugins.SpinnerDialog" />
-    </feature>
-    <feature name="Notification">
-        <param name="android-package" value="org.apache.cordova.dialogs.Notification" />
     </feature>
     <name>SmartReader</name>
     <description>

@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<plugin
+  xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        id="sk.tamex.locationandsettings"
+        version="1.0.1">
+  <name>Location And Settings</name>
+    <description>Open WirelessSettings,WifiSettings,LocationSettings. Check if Gps or Wireless Network Location is enabled.</description>
+    <author>Filip Lazistan</author>
+    <keywords>android, Wireless Settings, Wifi Settings, Location Settings, GPS location, Wireless Network Location</keywords>
+    <license>MIT</license>
+
+  <js-module src="www/LocationAndSettings.js" name="LocationAndSettings">
+    <clobbers target="LocationAndSettings" />
+  </js-module>
+
+  <!-- android -->
+  <platform name="android">
+    <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="LocationAndSettings" >
+                <param name="android-package" value="sk.tamex.cordova.plugins.LocationAndSettings"/>
+            </feature>
+        </config-file>
+
+    <config-file target="AndroidManifest.xml" parent="/manifest">
+            <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+            <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+            <uses-permission android:name="android.permission.INTERNET" />
+            <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+        </config-file>
+
+    <source-file src="src/sk/tamex/cordova/plugins/LocationAndSettings.java" target-dir="src/sk/tamex/cordova/plugins" />
+  </platform>
+
+
+  <platform name="android">
+        <source-file src="src/sk/tamex/cordova/plugins/LocationAndSettings.java" target-dir="src/sk/tamex/cordova/plugins" />
+
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="LocationAndSettings" >
+                <param name="android-package" value="sk.tamex.cordova.plugins.LocationAndSettings"/>
+            </feature>
+        </config-file>
+        
+        <config-file target="AndroidManifest.xml" parent="/manifest">
+            <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+            <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+            <uses-permission android:name="android.permission.INTERNET" />
+            <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+        </config-file>
+    </platform>
+</plugin>
+

@@ -35,6 +35,7 @@ img {
     text-align: center;
     font-weight: bold;
     font-size: 50px;
+    color: white;
 }
 
 #takePhoto span,
@@ -44,11 +45,11 @@ img {
 }
 
 #takePhoto {
-    background-color: #0d47a1;
+    background-color: #26a69a;
 }
 
 #browserNews {
-    background-color: #f44336;
+    background-color: #ee6e73;
 }
 
 #header {

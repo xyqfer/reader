@@ -14,24 +14,41 @@ document.addEventListener("deviceready", function () {
     });
 
     $("#submit").on("click", function () {
-        window.plugins.spinnerDialog.show();
+        var networkState = navigator.connection.type;
 
-        var dataURL = $("#container #crop").cropper("getCroppedCanvas").toDataURL();
-        var options = new FileUploadOptions();
-        options.fileKey = "ocrImage";
-        options.chunkedMode = false;
+        if (networkState == "none") {
+            navigator.notification.confirm(
+                "检测到您已经断开网络，是否马上打开？",
+                onConfirm,
+                "未联网",
+                ["取消", "去设置"]
+            );
 
-        var uri = encodeURI("http://dev.paper-reader.avosapps.com/upload");
-        var ft = new FileTransfer();
+            function onConfirm(buttonIndex) {
+                if (buttonIndex == 2) {
+                    LocationAndSettings.switchToWifiSettings();
+                }
+            }
+        } else {
+            window.plugins.spinnerDialog.show(null, "处理中...", true);
 
-        ft.upload(dataURL, uri, function (r) {
-            window.plugins.spinnerDialog.hide();
-            var text = r.response;
-            localStorage.setItem("text", text);
-            location.href = "speak.html";
-        }, function (error) {
-            //todo
-            alert("error " + error);
-        }, options);
+            var dataURL = $("#container #crop").cropper("getCroppedCanvas").toDataURL();
+            var options = new FileUploadOptions();
+            options.fileKey = "ocrImage";
+            options.chunkedMode = false;
+
+            var uri = encodeURI("http://dev.paper-reader.avosapps.com/upload");
+            var ft = new FileTransfer();
+
+            ft.upload(dataURL, uri, function (r) {
+                window.plugins.spinnerDialog.hide();
+                var text = r.response;
+                localStorage.setItem("text", text);
+                location.href = "speak.html";
+            }, function (error) {
+                //todo
+                alert("error " + error);
+            }, options);
+        }
     });
 }, false);

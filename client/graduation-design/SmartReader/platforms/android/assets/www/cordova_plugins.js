@@ -1,31 +1,102 @@
 cordova.define('cordova/plugin_list', function(require, exports, module) {
 module.exports = [
     {
-        "file": "plugins/daan.cordova.camera/www/CameraConstants.js",
-        "id": "daan.cordova.camera.Camera",
+        "file": "plugins/hu.dpal.phonegap.plugins.SpinnerDialog/www/spinner.js",
+        "id": "hu.dpal.phonegap.plugins.SpinnerDialog.SpinnerDialog",
+        "merges": [
+            "window.plugins.spinnerDialog"
+        ]
+    },
+    {
+        "file": "plugins/com.wordsbaking.cordova.tts/www/tts.js",
+        "id": "com.wordsbaking.cordova.tts.tts",
+        "clobbers": [
+            "TTS"
+        ]
+    },
+    {
+        "file": "plugins/org.apache.cordova.dialogs/www/notification.js",
+        "id": "org.apache.cordova.dialogs.notification",
+        "merges": [
+            "navigator.notification"
+        ]
+    },
+    {
+        "file": "plugins/org.apache.cordova.dialogs/www/android/notification.js",
+        "id": "org.apache.cordova.dialogs.notification_android",
+        "merges": [
+            "navigator.notification"
+        ]
+    },
+    {
+        "file": "plugins/org.apache.cordova.network-information/www/network.js",
+        "id": "org.apache.cordova.network-information.network",
+        "clobbers": [
+            "navigator.connection",
+            "navigator.network.connection"
+        ]
+    },
+    {
+        "file": "plugins/org.apache.cordova.network-information/www/Connection.js",
+        "id": "org.apache.cordova.network-information.Connection",
+        "clobbers": [
+            "Connection"
+        ]
+    },
+    {
+        "file": "plugins/com.ohh2ahh.plugins.appavailability/www/AppAvailability.js",
+        "id": "com.ohh2ahh.plugins.appavailability.AppAvailability",
+        "clobbers": [
+            "appAvailability"
+        ]
+    },
+    {
+        "file": "plugins/org.apache.cordova.inappbrowser/www/inappbrowser.js",
+        "id": "org.apache.cordova.inappbrowser.inappbrowser",
+        "clobbers": [
+            "window.open"
+        ]
+    },
+    {
+        "file": "plugins/com.develcode.plugins.volumeControl/www/VolumeControl.js",
+        "id": "com.develcode.plugins.volumeControl.VolumeControl",
+        "clobbers": [
+            "VolumeControl"
+        ]
+    },
+    {
+        "file": "plugins/org.apache.cordova.camera/www/CameraConstants.js",
+        "id": "org.apache.cordova.camera.Camera",
         "clobbers": [
             "Camera"
         ]
     },
     {
-        "file": "plugins/daan.cordova.camera/www/CameraPopoverOptions.js",
-        "id": "daan.cordova.camera.CameraPopoverOptions",
+        "file": "plugins/org.apache.cordova.camera/www/CameraPopoverOptions.js",
+        "id": "org.apache.cordova.camera.CameraPopoverOptions",
         "clobbers": [
             "CameraPopoverOptions"
         ]
     },
     {
-        "file": "plugins/daan.cordova.camera/www/Camera.js",
-        "id": "daan.cordova.camera.camera",
+        "file": "plugins/org.apache.cordova.camera/www/Camera.js",
+        "id": "org.apache.cordova.camera.camera",
         "clobbers": [
             "navigator.camera"
         ]
     },
     {
-        "file": "plugins/daan.cordova.camera/www/CameraPopoverHandle.js",
-        "id": "daan.cordova.camera.CameraPopoverHandle",
+        "file": "plugins/org.apache.cordova.camera/www/CameraPopoverHandle.js",
+        "id": "org.apache.cordova.camera.CameraPopoverHandle",
         "clobbers": [
             "CameraPopoverHandle"
+        ]
+    },
+    {
+        "file": "plugins/sk.tamex.locationandsettings/www/LocationAndSettings.js",
+        "id": "sk.tamex.locationandsettings.LocationAndSettings",
+        "clobbers": [
+            "LocationAndSettings"
         ]
     },
     {
@@ -187,45 +258,22 @@ module.exports = [
         "clobbers": [
             "window.FileTransfer"
         ]
-    },
-    {
-        "file": "plugins/hu.dpal.phonegap.plugins.SpinnerDialog/www/spinner.js",
-        "id": "hu.dpal.phonegap.plugins.SpinnerDialog.SpinnerDialog",
-        "merges": [
-            "window.plugins.spinnerDialog"
-        ]
-    },
-    {
-        "file": "plugins/com.wordsbaking.cordova.tts/www/tts.js",
-        "id": "com.wordsbaking.cordova.tts.tts",
-        "clobbers": [
-            "TTS"
-        ]
-    },
-    {
-        "file": "plugins/org.apache.cordova.dialogs/www/notification.js",
-        "id": "org.apache.cordova.dialogs.notification",
-        "merges": [
-            "navigator.notification"
-        ]
-    },
-    {
-        "file": "plugins/org.apache.cordova.dialogs/www/android/notification.js",
-        "id": "org.apache.cordova.dialogs.notification_android",
-        "merges": [
-            "navigator.notification"
-        ]
     }
 ];
 module.exports.metadata = 
 // TOP OF METADATA
 {
-    "daan.cordova.camera": "0.3.4",
-    "org.apache.cordova.file": "1.3.3",
-    "org.apache.cordova.file-transfer": "0.5.0",
     "hu.dpal.phonegap.plugins.SpinnerDialog": "1.3.1",
     "com.wordsbaking.cordova.tts": "0.2.1",
-    "org.apache.cordova.dialogs": "0.3.0"
+    "org.apache.cordova.dialogs": "0.3.0",
+    "org.apache.cordova.network-information": "0.2.15",
+    "com.ohh2ahh.plugins.appavailability": "0.3.1",
+    "org.apache.cordova.inappbrowser": "0.6.0",
+    "com.develcode.plugins.volumeControl": "1.0",
+    "org.apache.cordova.camera": "0.3.6",
+    "sk.tamex.locationandsettings": "1.0.1",
+    "org.apache.cordova.file": "1.3.3",
+    "org.apache.cordova.file-transfer": "0.5.0"
 }
 // BOTTOM OF METADATA
 });
