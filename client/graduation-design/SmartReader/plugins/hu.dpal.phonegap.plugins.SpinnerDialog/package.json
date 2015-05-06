@@ -1,0 +1,25 @@
+{
+    "version": "1.3.1",
+    "name": "hu.dpal.phonegap.plugins.spinnerdialog",
+    "cordova_name": "SpinnerDialog",
+    "description": "\n\t\t\tPhoneGap waiting dialog (progress indicator) plugin with spinner for Android, iOS and Windows Phone 8.\n\t",
+    "license": "MIT",
+    "keywords": [
+        "phonegap",
+        "android",
+        "ios",
+        "wp8",
+        "windows",
+        "phone",
+        "spinner",
+        "dialog",
+        "progress",
+        "indicator"
+    ],
+    "platforms": [
+        "android",
+        "ios",
+        "wp8"
+    ],
+    "engines": []
+}
