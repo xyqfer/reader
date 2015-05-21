@@ -200,5 +200,22 @@ reader
 	- [7] Eyob B. Kaise,” Concatenative speech synthesis for Amharic using unit selection method”, MEDES’12, october 25-31,2012,addis ababa,ethiopia.
 	- [8] Erik Blankinship, “Tools for Expressive Text to Speech Markup” UIST’01 orlando FLO, november 11-14, 2001
 	- [9] Ankit Asthana,” IOS 5, Android 4.0 And Windows 8 – A Review.
-	- [10] J. Tebelskis, Speech Recognition using Neural Networks, Pittsburgh: School of Computer Science, Carnegie Mellon University, 1995.  
+	- [10] J. Tebelskis, Speech Recognition using Neural Networks, Pittsburgh: School of Computer Science, Carnegie Mellon University, 1995.  
+	
+	
+### 论文提纲
+
+- 第一章 引言
+	- 介绍选题的背景和意义，课题需要完成的任务以及论文内容的安排
+- 第二章 开发环境及相关技术
+	- 介绍 Android 开发平台，包括开发环境，开发语言，调试等；介绍 Cordova 开发平台，LeanCloud 云服务平台
+- 第三章 报纸阅读器的需求分析
+	- 描述软件的业务流程，包括拍照，裁剪内容，文字识别，朗读，存储，以及一系列辅助功能，如音量调节，重复朗读，语音设置等
+- 第四章 报纸阅读器的功能设计
+	- 包括各个界面的布局设计，摄像头，裁剪，存储，OCR，TTS，Cordova 插件的调用，以及服务器端的功能设计
+- 第五章 报纸阅读器的实现 
+	- 包括开发所需要的软件和硬件平台，代码的具体的实现思路，以各个功能为基本单位，介绍布局和数据处理的设计细节
+- 第六章 结束语
+	- 回顾整个开发工作的过程和对课题趋势的展望
+
 

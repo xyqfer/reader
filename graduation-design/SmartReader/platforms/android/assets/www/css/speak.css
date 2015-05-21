@@ -1,0 +1,40 @@
+#speaking-title {
+    margin-top: 54px;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: center;
+}
+
+#tip-container {
+    padding-left: 10px;
+    padding-right: 10px;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+}
+
+#volume-container {
+    margin-top: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#tts-container {
+    padding-left: 10px;
+    padding-right: 10px;
+    position: absolute;
+    width: 100%;
+    bottom: 108px;
+}
+
+#repeat-container {
+    padding-left: 10px;
+    padding-right: 10px;
+    position: absolute;
+    width: 100%;
+    bottom: 54px;
+}
+
+#range-container {
+    margin-top: 30px;
+}
