@@ -28,3 +28,8 @@ server/node_modules
 .lock-wscript
 
 .DS_Store
+
+# IDE
+.idea
+.buildpath
+.project
